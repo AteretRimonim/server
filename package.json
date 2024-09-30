@@ -11,7 +11,7 @@
   "description": "",
   "dependencies": {
     "mogoose": "^0.0.1-security",
-    "mongoose": "^8.6.3",
+    "mongoose": "^8.7.0",
     "nodemon": "^3.1.4"
   }
 }

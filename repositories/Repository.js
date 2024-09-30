@@ -1,6 +1,6 @@
 const autoBind = require('auto-bind');
-const db = require('./dbConnect.js');
-const { HttpResponse } = require( '../helpers/HttpResponse.js' );
+const db = require('./db_connect.js');
+const { HttpResponse } = require( '../helpers/http-response.js' );
 
 class Repository {
     constructor(model) {

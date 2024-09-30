@@ -1,4 +1,4 @@
-const { HttpResponse } = require( '../helpers/HttpResponse.js' );
+const { HttpResponse } = require( '../helpers/http-response.js' );
 
 class Service {
     constructor(repo) {
