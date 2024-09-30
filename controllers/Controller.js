@@ -1,5 +1,4 @@
 const autoBind = require('auto-bind');
-const { insert } = require('../repositories/HelpReqestRepo');
 class Controller {
 
     constructor(service) {
