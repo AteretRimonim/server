@@ -11,7 +11,10 @@ class Repository {
     }
     async getAll(query) {
         try {
-            return await this.model.find(query);
+           console.log(query);
+           const items= await this.model.find(query);
+           console.log(items);
+            return items;
         } catch (error) {
             console.log(error);
             throw new Error("error getting all data from DB" + error);
@@ -23,7 +26,7 @@ class Repository {
             const item = await this.model.findOne({id: id });
 
             if (!item) {
-                const error = new Error('Item not found ' + item);
+                const error = new Error('Item not found ' + id);
                 error.statusCode = 404;
                 throw error;
             }

@@ -16,9 +16,9 @@ class Controller {
     }
 
     async get(req, res, next) {
-        const { helpReqId } = req.params;
+        const { idParam } = req.params;
         try {
-            const response = await this.service.get(helpReqId);
+            const response = await this.service.get(idParam);
 
             return res.status(response.statusCode).json(response);
         } catch (e) {
@@ -37,9 +37,9 @@ class Controller {
         }
     }
     async update(req, res, next) {
-        const { helpReqId } = req.params;
+        const { idParam } = req.params;
         try {
-            const response = await this.service.update(helpReqId, req.body);
+            const response = await this.service.update(idParam, req.body);
 
             return res.status(response.statusCode).json(response);
         } catch (e) {
@@ -48,11 +48,11 @@ class Controller {
     }
 
     async delete(req, res, next) {
-        const { helpReqId } = req.params;
-        console.log('😏🙄 ' + helpReqId);
+        const { idParam } = req.params;
+        console.log('😏🙄 ' + idParam);
 
         try {
-            const response = await this.service.delete(helpReqId);
+            const response = await this.service.delete(idParam);
 
             return res.status(response.statusCode).json(response);
         } catch (e) {

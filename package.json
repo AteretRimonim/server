@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start":"nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -10,6 +11,8 @@
   "keywords": [],
   "description": "",
   "dependencies": {
+    "auto-bind": "4.0.0",
+    "dotenv": "^16.4.5",
     "mogoose": "^0.0.1-security",
     "mongoose": "^8.6.3",
     "nodemon": "^3.1.4"

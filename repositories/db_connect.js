@@ -1,4 +1,4 @@
-const mongoose = requir('mongoose');
+const mongoose = require('mongoose');
 const autoBind = require('auto-bind');
 
 const connectionString = process.env.CONNECTION_STRING;
@@ -7,8 +7,7 @@ async function connect(){
     autoBind(this);
     try{
         await mongoose.connect(connectionString , {
-            useNewUrlParser :  true ,
-            useUnifiedTopology :  true ,
+          
             dbName: 'employeeManagementDB'
           });
     }
