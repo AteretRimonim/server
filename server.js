@@ -13,7 +13,7 @@ app.use('/api/employees',employeesRouter);
 
 app.use((err, req, res, next) => {
     console.log(err);
-    res.status(500).send('oops There is an error in the server😥, please try later...');
+    res.status(err.statusCode).send('oops There is an error in the server😥, please try later...');
 });
 
 app.listen(port,host,()=>{
