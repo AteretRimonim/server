@@ -1,5 +1,5 @@
 const Repository = require('./Repository');
-const employeeModel = require('../models/employee_model');
+const employeeModel = require('../models/employee.model');
 
 class EmployeeRepo extends Repository
 {

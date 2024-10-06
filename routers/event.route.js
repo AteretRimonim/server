@@ -1,4 +1,4 @@
-const controller = require('../controllers/employee.controller.js');
+const controller = require('../controllers/event.controller.js');
 
 const express = require('express');
 const router= express.Router();

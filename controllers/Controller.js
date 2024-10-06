@@ -16,9 +16,9 @@ class Controller {
     }
 
     async get(req, res, next) {
-        const { idParam } = req.params;
+        const { id } = req.params;
         try {
-            const response = await this.service.get(idParam);
+            const response = await this.service.get(id);
 
             return res.status(response.statusCode).json(response);
         } catch (e) {

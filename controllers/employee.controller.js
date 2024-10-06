@@ -1,11 +1,11 @@
 const Controller = require('./Controller');
-const employee_service = require('../services/employee_service');
+const employeeService = require('../services/employee.service');
 
 class EmployeeController extends Controller
 {
     constructor()
     {
-        super(employee_service);
+        super(employeeService);
     }
 }
 module.exports = new EmployeeController();

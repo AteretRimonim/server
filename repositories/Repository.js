@@ -11,9 +11,8 @@ class Repository {
     }
     async getAll(query) {
         try {
-           console.log(query);
            const items= await this.model.find(query);
-           console.log(items);
+        //    console.log(items);
             return items;
         } catch (error) {
             console.log(error);
@@ -51,12 +50,26 @@ class Repository {
     }
 
     async update(id, data) {
+        console.log('♥ '+ id);
         try {
-            console.log('♥ '+ id);
+            if (!id || !data || typeof id !== 'string' || Object.keys(data).length === 0)
+            {
+                return new HttpResponse(null, { statusCode: 400, errorMessage: 'Invalid ID or object provided' });
+            }
+            if (data.id && data.id !== id)
+            {
+                return new HttpResponse(null,{ statusCode: 400, errorMessage: 'ID in query and object do not match' });
+            }
+          
             const item = await this.model.findOneAndUpdate({ id: id }, data, { 'new': true });
             console.log('😣 ' + item)
+            if (!item) 
+            {
+                return new HttpResponse(null, { statusCode: 404, errorMessage: 'Item not found' });
+            }
             return new HttpResponse(item);
-        } catch (errors) {
+        } 
+        catch (errors) {
             throw errors;
         }
     }

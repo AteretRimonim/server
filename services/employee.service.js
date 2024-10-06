@@ -1,11 +1,11 @@
 const Service = require('./Service');
-const repo = require('../repositories/employee_repo');
+const employeeRepo = require('../repositories/employee.repo');
 
 class EmployeeService extends Service
 {
     constructor()
     {
-        super(repo);
+        super(employeeRepo);
     }
 }
 module.exports= new EmployeeService();
