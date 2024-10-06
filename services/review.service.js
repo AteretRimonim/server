@@ -1,11 +1,11 @@
 const Service = require('./Service');
-const repo = require('../repositories/review.repo');
+const reviewRepo = require('../repositories/review.repo');
 
 class ReviewService extends Service
 {
     constructor()
     {
-        super(repo);
+        super(reviewRepo);
     }
 }
 module.exports = new ReviewService();

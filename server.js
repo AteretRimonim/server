@@ -3,6 +3,7 @@ const express = require('express');
 
 const employeesRouter = require('./routers/employee.route');
 const reviewsRouter = require('./routers/review.route');
+const eventRouter = require('./routers/event.route');
 
 const app = express();
 const host = process.env.HOST;
@@ -12,6 +13,7 @@ app.use(express.json());
 
 app.use('/api/employees',employeesRouter);
 app.use('/api/reviews',reviewsRouter);
+app.use('/api/events',eventRouter);
 
 
 app.use((err, req, res, next) => {
