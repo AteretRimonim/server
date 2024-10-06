@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 
 const employeesRouter = require('./routers/employee.route');
+const reviewsRouter = require('./routers/review.route');
 
 const app = express();
 const host = process.env.HOST;
@@ -10,6 +11,8 @@ const port = process.env.PORT;
 app.use(express.json());
 
 app.use('/api/employees',employeesRouter);
+app.use('/api/reviews',reviewsRouter);
+
 
 app.use((err, req, res, next) => {
     console.log(err);

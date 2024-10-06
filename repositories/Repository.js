@@ -11,9 +11,8 @@ class Repository {
     }
     async getAll(query) {
         try {
-           console.log(query);
            const items= await this.model.find(query);
-           console.log(items);
+        //    console.log(items);
             return items;
         } catch (error) {
             console.log(error);

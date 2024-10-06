@@ -1,8 +1,7 @@
-const controller = require('../controllers/employee.controller.js');
+const controller = require('../controllers/review.controller.js');
 
 const express = require('express');
 const router= express.Router();
-
 
 router.get('/',controller.getAll);
 
