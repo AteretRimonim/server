@@ -54,6 +54,7 @@ class Service {
     }
 
     async update(id, data) {
+        console.log("yehudit" +id)
         try {
             const item = await this.repo.update(id, data, { 'new': true });
 

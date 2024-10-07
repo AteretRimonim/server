@@ -6,6 +6,7 @@ const reviewsRouter = require('./routers/review.route');
 const eventRouter = require('./routers/event.route');
 const attendanceRouter = require('./routers/attendance.route');
 const employee_eventsRouter = require('./routers/employee_event.route');
+const userRouter = require('./routers/user.route');
 
 
 const app = express();
@@ -19,6 +20,7 @@ app.use('/api/reviews',reviewsRouter);
 app.use('/api/events',eventRouter);
 app.use('/api/attendances',attendanceRouter);
 app.use('/api/employee_events',employee_eventsRouter);
+app.use('/api/users',userRouter);
 
 
 app.use((err, req, res, next) => {
