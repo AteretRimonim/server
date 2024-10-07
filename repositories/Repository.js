@@ -49,10 +49,11 @@ class Repository {
         }
     }
 
+    // typeof id !== 'string' ||
     async update(id, data) {
         console.log('♥ '+ id);
         try {
-            if (!id || !data || typeof id !== 'string' || Object.keys(data).length === 0)
+            if (!id || !data ||  Object.keys(data).length === 0)
             {
                 return new HttpResponse(null, { statusCode: 400, errorMessage: 'Invalid ID or object provided' });
             }
