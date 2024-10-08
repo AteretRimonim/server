@@ -56,12 +56,8 @@ class Service {
     async update(id, data) {
         try {
             const item = await this.repo.update(id, data, { 'new': true });
-
-            return {
-                error: false,
-                statusCode: 200,
-                data: item
-            };
+            console.log(item);
+            return item;
         } catch (errors) {
             throw errors;
         }

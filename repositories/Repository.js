@@ -51,12 +51,13 @@ class Repository {
 
     async update(id, data) {
         console.log('♥ '+ id);
+        console.log('data.id '+data.id );
         try {
             if (!id || !data || typeof id !== 'string' || Object.keys(data).length === 0)
             {
                 return new HttpResponse(null, { statusCode: 400, errorMessage: 'Invalid ID or object provided' });
             }
-            if (data.id && data.id !== id)
+            if (data.id && data.id != id)
             {
                 return new HttpResponse(null,{ statusCode: 400, errorMessage: 'ID in query and object do not match' });
             }
