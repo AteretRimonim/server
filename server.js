@@ -4,6 +4,10 @@ const express = require('express');
 const employeesRouter = require('./routers/employee.route');
 const reviewsRouter = require('./routers/review.route');
 const eventRouter = require('./routers/event.route');
+const attendanceRouter = require('./routers/attendance.route');
+const employee_eventsRouter = require('./routers/employee_event.route');
+const userRouter = require('./routers/user.route');
+
 
 const app = express();
 const host = process.env.HOST;
@@ -14,6 +18,9 @@ app.use(express.json());
 app.use('/api/employees',employeesRouter);
 app.use('/api/reviews',reviewsRouter);
 app.use('/api/events',eventRouter);
+app.use('/api/attendances',attendanceRouter);
+app.use('/api/employee_events',employee_eventsRouter);
+app.use('/api/users',userRouter);
 
 
 app.use((err, req, res, next) => {
@@ -21,6 +28,7 @@ app.use((err, req, res, next) => {
     res.status(err.statusCode).send('oops There is an error in the server😥, please try later...');
 });
 
+ 
 app.listen(port,host,()=>{
 console.log(`server running at http://${host}:${port}`);
 });
