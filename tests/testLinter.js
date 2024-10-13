@@ -1,7 +1,7 @@
 // test.js
-const unusedVar = 42; // בעיה: משתנה לא בשימוש
 
 // שימוש ב-console.log
 console.log("Hello, world!");
+console.log("something");
 
 // הערה בעברית: TODO
