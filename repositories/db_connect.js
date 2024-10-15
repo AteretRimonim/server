@@ -7,7 +7,7 @@ async function connect(){
     autoBind(this);
     try{
         await mongoose.connect(connectionString , {
-          
+        
             dbName: 'employeeManagementDB'
           });
     }
