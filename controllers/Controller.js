@@ -17,7 +17,6 @@ class Controller {
 
     async get(req, res, next) {
         const { id } = req.params;
-        console.log("hgduygcf  "+id);
         try {
             const response = await this.service.get(id);
 
@@ -39,7 +38,6 @@ class Controller {
     }
     async update(req, res, next) {
         const { id } = req.params;
-        console.log("nono" +id) 
         try {
             const response = await this.service.update(id, req.body);
 
@@ -51,8 +49,6 @@ class Controller {
 
     async delete(req, res, next) {
         const { id } = req.params;
-        console.log('😏🙄 ' + id);
-
         try {
             const response = await this.service.delete(id);
 

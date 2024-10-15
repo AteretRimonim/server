@@ -38,7 +38,7 @@ class Service {
     async insert(data) {
         try {
             const item = await this.repo.insert(data);
-
+            
             if (item) {
                 return {
                     error: false,
@@ -54,7 +54,6 @@ class Service {
     }
 
     async update(id, data) {
-        console.log("yehudit" +id)
         try {
             const item = await this.repo.update(id, data, { 'new': true });
 

@@ -52,7 +52,6 @@ class Repository {
     // ||  Object.keys(data).length === 0
     // typeof id !== 'string' ||
     async update(id, data) {
-        console.log('♥ '+ id);
         try {
             if (!id || !data || typeof id !== 'string' || Object.keys(data).length === 0 )
             {
@@ -64,7 +63,6 @@ class Repository {
             }
           
             const item = await this.model.findOneAndUpdate({ id: id }, data, { 'new': true });
-            console.log('😣 ' + item)
             if (!item) 
             {
                 return new HttpResponse(null, { statusCode: 404, errorMessage: 'Item not found' });
@@ -77,11 +75,9 @@ class Repository {
     }
 
     async delete(id) {
-        console.log('😎 ' + id)
         try
         {
             const item = await this.model.findOneAndDelete({ id: id });
-            console.log('😴 '+ item)
             if (!item) 
             {
                 const error = new Error('Item not found');
