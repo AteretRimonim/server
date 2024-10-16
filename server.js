@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 
 const employeesRouter = require('./routers/employee.route');
 const reviewsRouter = require('./routers/review.route');
@@ -15,6 +16,7 @@ const port = process.env.PORT;
 
 app.use(express.json());
 
+app.use(cors());
 app.use('/api/employees',employeesRouter);
 app.use('/api/reviews',reviewsRouter);
 app.use('/api/events',eventRouter);
