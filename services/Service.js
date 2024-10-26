@@ -56,7 +56,6 @@ class Service {
     async update(id, data) {
         try {
             const item = await this.repo.update(id, data, { 'new': true });
-            console.log(item);
             return item;
         } catch (errors) {
             throw errors;

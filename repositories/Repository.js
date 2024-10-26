@@ -9,17 +9,32 @@ class Repository {
         autoBind(this);
 
     }
+    /**
+ * Retrieves all items from the database based on the given query.
+ * 
+ * @async
+ * @function getAll
+ * @returns {Promise<Array>} A promise that resolves to an array of items.
+ * @throws {Error} If the operation fails.
+ */
     async getAll(query) {
         try {
            const items= await this.model.find(query);
-        //    console.log(items);
             return items;
         } catch (error) {
             console.log(error);
             throw new Error("error getting all data from DB" + error);
         }
     }
-
+/**
+ * Retrieves a single item by its ID from the database.
+ * 
+ * @async
+ * @function get
+ * @param {string} id - The ID of the item to retrieve.
+ * @returns {Promise<HttpResponse>} A promise that resolves to an HttpResponse containing the item.
+ * @throws {Error} If the item is not found or the operation fails.
+ */
     async get(id) {
         try {
             const item = await this.model.findOne({id: id });
@@ -36,6 +51,16 @@ class Repository {
             throw errors;
         }
     }
+
+/**
+ * Inserts a new item into the database.
+ * 
+ * @async
+ * @function insert
+ * @param {object} data - The data of the item to insert.
+ * @returns {Promise<HttpResponse>} A promise that resolves to an HttpResponse containing the inserted item.
+ * @throws {Error} If the operation fails.
+ */
     async insert(data) {
         try {
             const item = await this.model.create(data);
@@ -48,22 +73,28 @@ class Repository {
             throw error;
         }
     }
-
+/**
+ * Updates an existing item by its ID.
+ * 
+ * @async
+ * @function update
+ * @param {string} id - The ID of the item to update.
+ * @param {object} data - The updated data of the item.
+ * @returns {Promise<HttpResponse>} A promise that resolves to an HttpResponse containing the updated item or an error message.
+ * @throws {Error} If the item is not found or the operation fails.
+ */
     async update(id, data) {
-        console.log('♥ '+ id);
-        console.log('data.id '+data.id );
         try {
-            if (!id || !data || typeof id !== 'string' || Object.keys(data).length === 0)
+            if (isNotValidParms(id, data))
             {
-                return new HttpResponse(null, { statusCode: 400, errorMessage: 'Invalid ID or object provided' });
+                return new HttpResponse(null, { statusCode: 422, errorMessage: 'Invalid ID or object provided' });
             }
             if (data.id && data.id != id)
             {
-                return new HttpResponse(null,{ statusCode: 400, errorMessage: 'ID in query and object do not match' });
+                return new HttpResponse(null,{ statusCode: 422, errorMessage: 'ID in query and object do not match' });
             }
           
             const item = await this.model.findOneAndUpdate({ id: id }, data, { 'new': true });
-            console.log('😣 ' + item)
             if (!item) 
             {
                 return new HttpResponse(null, { statusCode: 404, errorMessage: 'Item not found' });
@@ -74,13 +105,23 @@ class Repository {
             throw errors;
         }
     }
-
+isNotValidParms(id,data)
+{
+    return (!id || !data || typeof id !== 'string' || Object.keys(data).length === 0) ;
+}
+/**
+ * Deletes an item by its ID from the database.
+ * 
+ * @async
+ * @function delete
+ * @param {string} id - The ID of the item to delete.
+ * @returns {Promise<HttpResponse>} A promise that resolves to an HttpResponse containing the deleted item.
+ * @throws {Error} If the item is not found or the operation fails.
+ */
     async delete(id) {
-        console.log('😎 ' + id)
         try
         {
             const item = await this.model.findOneAndDelete({ id: id });
-            console.log('😴 '+ item)
             if (!item) 
             {
                 const error = new Error('Item not found');

@@ -49,8 +49,6 @@ class Controller {
 
     async delete(req, res, next) {
         const { id } = req.params;
-        console.log('😏🙄 ' + id);
-
         try {
             const response = await this.service.delete(id);
 

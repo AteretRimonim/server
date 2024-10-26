@@ -2,13 +2,21 @@ const mongoose = require('mongoose');
 const autoBind = require('auto-bind');
 
 const connectionString = process.env.CONNECTION_STRING;
+const dbName = process.env.DB_NAME;
 
+/**
+ * Connects to MongoDB using Mongoose.
+ * 
+ * @async
+ * @function connect
+ * @throws {Error} If the connection fails.
+ */
 async function connect(){
     autoBind(this);
     try{
         await mongoose.connect(connectionString , {
         
-            dbName: 'employeeManagementDB'
+            dbName: dbName
           });
     }
  catch (error) {
