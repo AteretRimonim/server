@@ -51,7 +51,6 @@ class Controller {
         const { id } = req.params;
         try {
             const response = await this.service.delete(id);
-
             return res.status(response.statusCode).json(response);
         } catch (e) {
             next(e);
