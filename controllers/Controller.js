@@ -53,7 +53,8 @@ class Controller {
         {
             const response = await this.service.delete(id);
             return res.status(response.statusCode).json(response);
-        } catch (e) {
+        } 
+        catch (e) {
             next(e);
         }
     }
