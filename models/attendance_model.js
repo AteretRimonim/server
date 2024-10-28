@@ -16,19 +16,18 @@ const attendanceSchema=new mongoose.Schema({
     required: true,
    },
    check_in_time:{
-    type: String,
+    type: Date,
     required: true,
-    trim: true,
    },
    check_out_time:{
-    type: String,
+    type: Date,
     required: true,
-    trim: true,
    },
-   status:{
-    type: String,
-    required: true,
-    trim: true,
-   }
+   status: {
+      type: String,
+      required: true,
+      enum: ['present', 'absent', 'late'],
+      trim: true,
+  }
 });
 module.exports = mongoose.model('Attendance', attendanceSchema);

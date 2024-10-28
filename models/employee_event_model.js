@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 const employeeEventSchema = new mongoose.Schema({
 id: {
-    type: Number,
+    type: String,
     required: true,
-    unique: true
+    unique: true,
 },
 employee_id:{
     type: mongoose.Schema.Types.ObjectId,

@@ -12,7 +12,6 @@ class Repository {
     async getAll(query) {
         try {
            const items= await this.model.find(query);
-        //    console.log(items);
             return items;
         } catch (error) {
             console.log(error);
@@ -49,17 +48,16 @@ class Repository {
         }
     }
 
-    // ||  Object.keys(data).length === 0
-    // typeof id !== 'string' ||
+
     async update(id, data) {
         try {
             if (!id || !data || typeof id !== 'string' || Object.keys(data).length === 0 )
             {
-                return new HttpResponse(null, { statusCode: 400, errorMessage: 'Invalid ID or object provided' });
+                return new HttpResponse(null, { statusCode: 422, errorMessage: 'Invalid ID or object provided' });
             }
             if (data.id && data.id != id)
             {
-                return new HttpResponse(null,{ statusCode: 400, errorMessage: 'ID in query and object do not match' });
+                return new HttpResponse(null,{ statusCode: 422, errorMessage: 'ID in query and object do not match' });
             }
           
             const item = await this.model.findOneAndUpdate({ id: id }, data, { 'new': true });
