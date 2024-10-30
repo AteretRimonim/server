@@ -49,13 +49,12 @@ class Controller {
 
     async delete(req, res, next) {
         const { id } = req.params;
-        console.log('😏🙄 ' + id);
-
-        try {
+        try 
+        {
             const response = await this.service.delete(id);
-
             return res.status(response.statusCode).json(response);
-        } catch (e) {
+        } 
+        catch (e) {
             next(e);
         }
     }
