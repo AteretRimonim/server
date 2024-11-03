@@ -38,7 +38,7 @@ class Service {
     async insert(data) {
         try {
             const item = await this.repo.insert(data);
-
+            
             if (item) {
                 return {
                     error: false,

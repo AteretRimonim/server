@@ -1,4 +1,4 @@
-const controller = require('../controllers/employee.controller.js');
+const controller = require('../controllers/attendance.controller');
 
 const express = require('express');
 const router= express.Router();
@@ -10,7 +10,7 @@ router.get('/:id',controller.get);
 
 router.post('/', controller.insert)
 
-router.put('/:id',controller.update)
+router.put('/:id', controller.update)
 
 router.delete('/:id', controller.delete)
 
