@@ -1,12 +1,18 @@
 const Repository = require("./Repository");
 const userModel = require("../models/user.model");
 const { HttpResponse } = require( '../helpers/http-response.js' );
+const autoBind = require('auto-bind');
 
 class UserRepo extends Repository {
   constructor() {
     super(userModel);
+    autoBind(this)
   }
-
+  
+  async getUserByUserName(userName)
+  {
+    return await this.model.findOne({ userName: userName });
+  }
 
   async existsUserToLogin(password, email) {
     try {
