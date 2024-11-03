@@ -30,7 +30,6 @@ async login(req, res, next) {
 
 async refreshToken(req, res, next){
     try {
-        console.log("🧊" + req.cookies.refreshToken);
         const refreshToken = req.cookies.refreshToken;
         const newTokens = await authService.refreshToken(refreshToken);
         res.json({ accessToken: newTokens.accessToken });
